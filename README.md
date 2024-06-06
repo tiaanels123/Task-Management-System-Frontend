@@ -73,8 +73,8 @@ task-management-frontend/
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/task-management-system.git
-   cd task-management-system
+   git clone https://github.com/tiaanels123/Task-Management-System-Frontend.git
+   cd Task-Management-System-Frontend
    ```
 
 2. **Install dependencies:**
