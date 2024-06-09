@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -13,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(credentials);
-      // Redirect to dashboard or any other page
+      navigate('/dashboard'); // Redirect to Dashboard after login
     } catch (error) {
       console.error(error);
     }

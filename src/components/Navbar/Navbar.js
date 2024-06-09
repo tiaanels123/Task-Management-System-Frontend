@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -11,6 +12,7 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         {user ? (
           <>
+            <li><Link to="/profile">My Profile</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
             <li><button onClick={logout}>Logout</button></li>
           </>

@@ -1,17 +1,10 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App';
-import { AuthProvider } from './context/AuthContext';
-import { TaskProvider } from './context/TaskContext';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <TaskProvider>
-        <App />
-      </TaskProvider>
-    </AuthProvider>
-  </React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
