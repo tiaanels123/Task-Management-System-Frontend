@@ -8,7 +8,7 @@ import UserProfile from './components/User/UserProfile';
 import Navbar from './components/Navbar/Navbar';
 import { AuthProvider } from './context/AuthContext';
 import { TaskProvider } from './context/TaskContext';
-import ProtectedRoute from './utils/ProtectedRoute';  // Import ProtectedRoute
+import ProtectedRoute from './utils/ProtectedRoute'; // Correct path
 
 const RoutesComponent = () => {
   return (
@@ -20,8 +20,16 @@ const RoutesComponent = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-            <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            } />
           </Routes>
         </TaskProvider>
       </AuthProvider>

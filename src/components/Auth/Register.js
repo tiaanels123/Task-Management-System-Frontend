@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 const Register = () => {
   const [credentials, setCredentials] = useState({ username: '', email: '', password: '' });
-  const [error, setError] = useState('');  // State to hold error messages
+  const [error, setError] = useState('');
   const { register } = useContext(AuthContext);
 
   const handleChange = (e) => {
@@ -13,7 +13,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     register(credentials, (errorMessage) => {
-      setError(errorMessage);  // Set error message received from the register function
+      setError(errorMessage);
     });
   };
 
@@ -31,7 +31,7 @@ const Register = () => {
         <label>Password</label>
         <input type="password" name="password" value={credentials.password} onChange={handleChange} />
       </div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}  // Display error message if it exists
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <button type="submit">Register</button>
     </form>
   );

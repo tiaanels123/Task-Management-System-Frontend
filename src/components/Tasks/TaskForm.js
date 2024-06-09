@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 const TaskForm = () => {
   const [task, setTask] = useState({ title: '', description: '', status: 'To-Do' });
   const { addTask } = useContext(TaskContext);
-  const { user } = useContext(AuthContext);  // Use AuthContext to get user
+  const { user } = useContext(AuthContext);
 
   const handleChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });
@@ -13,7 +13,7 @@ const TaskForm = () => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  const taskWithUser = { ...task, userId: user.id };  // user.id is retrieved from AuthContext
+  const taskWithUser = { ...task, userId: user.id };  
   try {
       await addTask(taskWithUser);
       setTask({ title: '', description: '', status: 'To-Do' });
