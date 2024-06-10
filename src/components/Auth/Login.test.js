@@ -6,8 +6,7 @@ const axios = require('axios').default;
 const { AuthProvider } = require('../../context/AuthContext');
 const Login = require('./Login').default;
 
-const axiosInstance = axios.create();
-const mock = new MockAdapter(axiosInstance);
+const mock = new MockAdapter(axios);
 
 // Mock the alert function before all tests
 beforeAll(() => {
@@ -35,7 +34,7 @@ describe('Login component', () => {
     await act(async () => {
       render(
         <BrowserRouter>
-          <AuthProvider axiosInstance={axiosInstance}>
+          <AuthProvider axiosInstance={axios}>
             <Login />
           </AuthProvider>
         </BrowserRouter>
@@ -45,7 +44,7 @@ describe('Login component', () => {
     // Simulate user input
     fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'testUser' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'password' } });
-    fireEvent.click(screen.getByText(/login/i));
+    fireEvent.click(screen.getByRole('button', { name: /login/i }));
 
     // Wait for the mock POST request to be made
     await waitFor(() => {

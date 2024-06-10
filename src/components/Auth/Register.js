@@ -2,21 +2,18 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 const Register = () => {
-  // State to manage user credentials
   const [credentials, setCredentials] = useState({ username: '', email: '', password: '' });
-  const [error, setError] = useState(''); // State to manage errors
-  const { register } = useContext(AuthContext); // Context for authentication functions
+  const [error, setError] = useState('');
+  const { register } = useContext(AuthContext);
 
-  // Handler for input changes
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  // Handler for form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     register(credentials, (errorMessage) => {
-      setError(errorMessage); // Set error message if registration fails
+      setError(errorMessage);
     });
   };
 
