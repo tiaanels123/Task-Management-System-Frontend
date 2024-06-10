@@ -15,7 +15,7 @@ The Task Management System Frontend is a React application designed to provide a
    - Task status updates (To-Do, In-Progress, Done).
 
 2. **User Management:**
-   - Semi CRUD operations for tasks.
+   - Semi CRUD operations for users.
    - User updates (Username, Email).
 
 3. **Dashboard:**
