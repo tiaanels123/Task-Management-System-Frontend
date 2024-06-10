@@ -2,12 +2,14 @@ import React, { createContext, useState, useContext, useEffect, useCallback } fr
 import axios from 'axios';
 import { AuthContext } from './AuthContext';
 
+// Create TaskContext
 export const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const { user } = useContext(AuthContext);
 
+  // Fetch tasks
   const fetchTasks = useCallback(async () => {
     if (user && user.token) {
       try {
@@ -25,6 +27,7 @@ export const TaskProvider = ({ children }) => {
     fetchTasks();
   }, [fetchTasks]);
 
+  // Add a new task
   const addTask = async (task) => {
     if (user && user.token) {
       try {
@@ -43,10 +46,11 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
+  // Update an existing task
   const updateTask = async (task) => {
     if (user && user.token) {
       const updatedTask = { ...task }; // Create a copy of task to be updated
-      setTasks(prevTasks => prevTasks.map(t => t.id === task.id ? {...t, ...updatedTask} : t)); // Optimistically update task
+      setTasks(prevTasks => prevTasks.map(t => t.id === task.id ? { ...t, ...updatedTask } : t)); // Optimistically update task
 
       try {
         const response = await axios.put(`http://localhost:5249/api/tasks/${task.id}`, updatedTask, {
@@ -58,11 +62,12 @@ export const TaskProvider = ({ children }) => {
       } catch (error) {
         // If the update fails, revert to the previous state
         console.error("Error updating task:", error);
-        setTasks(prevTasks => prevTasks.map(t => t.id === task.id ? {...t, status: task.status} : t)); // Revert if update fails
+        setTasks(prevTasks => prevTasks.map(t => t.id === task.id ? { ...t, status: task.status } : t)); // Revert if update fails
       }
     }
   };
 
+  // Delete a task
   const deleteTask = async (id) => {
     if (user && user.token) {
       try {

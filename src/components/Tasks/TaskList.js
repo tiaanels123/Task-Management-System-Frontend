@@ -9,6 +9,7 @@ const TaskList = () => {
 
   return (
     <div>
+      {/* Render a list of TaskItem components */}
       {tasks.map(task => (
         <TaskItem key={task.id} task={task} />
       ))}

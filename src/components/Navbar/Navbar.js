@@ -4,12 +4,13 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 const Navbar = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext); // Get user and logout function from AuthContext
 
   return (
     <nav className="bg-gray-800 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex space-x-4">
+          {/* Navigation links */}
           <Link to="/" className="hover:text-gray-300">Home</Link>
           {user && (
             <>

@@ -14,6 +14,10 @@ The Task Management System Frontend is a React application designed to provide a
    - CRUD operations for tasks.
    - Task status updates (To-Do, In-Progress, Done).
 
+2. **User Management:**
+   - Semi CRUD operations for tasks.
+   - User updates (Username, Email).
+
 3. **Dashboard:**
    - Overview of tasks based on status.
 
@@ -34,10 +38,6 @@ The Task Management System Frontend is a React application designed to provide a
    - Global state management using React Context API.
    - Auth context for managing authentication state.
 
-3. **Service Pattern:**
-   - Abstracting API calls into service functions.
-   - Services: `authService`, `taskService`.
-
 ## Project Structure
 
 ```plaintext
@@ -47,21 +47,28 @@ task-management-frontend/
 │   ├── components/
 │   │   ├── Auth/
 │   │   │   ├── Login.js
-│   │   │   └── Register.js
+│   │   │   ├── Login.test.js
+│   │   │   ├── Register.js
+│   │   │   └── Register.test.js
 │   │   ├── Tasks/
 │   │   │   ├── TaskList.js
 │   │   │   ├── TaskForm.js
 │   │   │   └── TaskItem.js
 │   │   ├── Dashboard/
 │   │   │   └── Dashboard.js
-│   │   └── Navbar/
-│   │       └── Navbar.js
+│   │   ├── Home/
+│   │   │   └── Home.js
+│   │   ├── Navbar/
+│   │   │   └── Navbar.js
+│   │   ├── User/
+│   │   │   ├── UserIntro.js
+│   │   │   ├── UserProfile.js
+│   │   │   └── UserProfile.test.js
 │   ├── context/
 │   │   ├── AuthContext.js
 │   │   └── TaskContext.js
-│   ├── services/
-│   │   ├── authService.js
-│   │   └── taskService.js
+│   ├── utils/
+│   │   └── ProtectedRoute.js
 │   ├── App.js
 │   ├── index.js
 │   └── routes.js
