@@ -5,11 +5,11 @@ const UserIntro = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div>
+    <div className="text-center py-4">
       {user ? (
         <div>
-          <h1>Welcome, {user.userName}!</h1>
-          <p>Email: {user.email}</p>
+          <h1 className="text-2xl font-bold">Welcome, {user.userName}!</h1>
+          <p className="text-gray-600">Email: {user.email}</p>
         </div>
       ) : (
         <p>Loading user data...</p>
